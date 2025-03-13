@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            height:100vh;
+            width:100vw;
+            display:flex;
+            gap:9px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap:wrap;
+            background-color: #180909;
+            perspective: 1000px;
+        }
+        .card_img {
+            /* border: 3px solid red; */
+            height:22rem;
+            width:10rem;
+            object-fit: cover;
+            cursor: pointer;
+            transition: 0.5s;
+            filter:brightness(0);
+            transform-style: preserve-3d;
+        }
+        .card_img:hover {
+            filter:brightness(1);
+            transform: translateZ(200px);
+            z-index: 1;
+        }
+        .card_img:hover + * {
+            filter:brightness(0.6);
+            transform: translateZ(150px) rotateY(30deg);
+        }
+        .card_img:hover + * + * {
+            filter:brightness(0.4);
+            transform: translateZ(70px) rotateY(15deg);
+        }
+        .card_img:has(+*:hover) {
+            filter:brightness(0.6);
+            transform: translateZ(150px) rotateY(-30deg);
+        }
+        .card_img:has(+* +*:hover) {
+            filter:brightness(0.4);
+            transform: translateZ(70px) rotateY(-15deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="card_img" src="15.jpg"> 
+        <img class="card_img" src="16.jpg"> 
+        <img class="card_img" src="17.jpg"> 
+        <img class="card_img" src="18.jpg"> 
+        <img class="card_img" src="19.jpg"> 
+        <img class="card_img" src="20.jpg"> 
+        <img class="card_img" src="21.jpg"> 
+    </div>
+</body>
+</html>
